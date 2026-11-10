@@ -27,6 +27,9 @@
 
 .grid .grid-tile.active{
     background-color: rgba(0, 0, 255, 0.075);
+    &:hover{
+      background-color: rgba(255, 0, 255, 0.075);
+    }
 }
 
 .grid::before {
