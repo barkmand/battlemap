@@ -1,0 +1,38 @@
+.battlemap {
+  display:flex;
+  --size: 100px;
+  --margin: 4px;
+  --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px);
+}
+
+.grid {
+  font-size: 0; /* disable white space between inline block element */
+}
+
+.grid .grid-tile {
+  width: var(--size);
+  margin: var(--margin);
+  height: calc(var(--size) * 1.1547);
+  display: inline-block;
+  font-size: 1rem;
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  margin-bottom: calc(var(--margin) - var(--size) * 0.2885);
+
+  background-color: rgba(0, 0, 0, 0.025);
+  transition: 40ms ease-out;
+  &:hover{
+    background-color: rgba(255, 0, 0, 0.075);
+  }
+}
+
+.grid .grid-tile.active{
+    background-color: rgba(0, 0, 255, 0.075);
+}
+
+.grid::before {
+  content: "";
+  width: calc(var(--size) / 2 + var(--margin));
+  float: left;
+  height: 120%; 
+  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
+}
