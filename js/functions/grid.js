@@ -19,7 +19,7 @@ export function grid(){
                 function resetToggle(){
                     toggleTilesConfirmation = false
                 }
-                setTimeout(resetToggle, 300)
+                setTimeout(resetToggle, 400)
             }
     }
     })

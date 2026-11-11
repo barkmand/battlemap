@@ -1,15 +1,18 @@
 .battlemap {
-  display:flex;
+  display:  flex;
+  justify-content: center;
+  height: 100vh;
+
   --size: 100px;
-  --margin: 4px;
+  --margin: 2px;
   --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px);
 }
 
 .grid {
-  font-size: 0; /* disable white space between inline block element */
+  font-size: 0; /* disable white space between inline block element because of line-height */
 }
 
-.grid .grid-tile {
+.grid-tile {
   width: var(--size);
   margin: var(--margin);
   height: calc(var(--size) * 1.1547);
@@ -25,7 +28,7 @@
   }
 }
 
-.grid .grid-tile.active{
+.grid-tile.active{
     background-color: rgba(0, 0, 255, 0.075);
     &:hover{
       background-color: rgba(255, 0, 255, 0.075);
