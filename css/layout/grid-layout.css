@@ -3,7 +3,7 @@
   justify-content: center;
   height: 100vh;
 
-  --size: 80px;
+  --size: 50px;
   --margin: 2px;
   --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px);
 }
