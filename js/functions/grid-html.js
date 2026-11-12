@@ -9,21 +9,21 @@ export function gridHtml() {
     const tile = document.querySelector(".grid-tile")
     const margin = parseFloat(getComputedStyle(tile).marginInline) * 2
     
-    let mainWidth = main.getBoundingClientRect().width
-    let tileWidth = tile.getBoundingClientRect().width + margin
-    let tilesPerRow = Math.floor(mainWidth / tileWidth)
+    const mainWidth = main.getBoundingClientRect().width
+    const tileWidth = tile.getBoundingClientRect().width + margin
+
+    const tilesPerRow = Math.floor(mainWidth / tileWidth)
     
-    let mainHeight = main.getBoundingClientRect().height
-    let tileHeight = tile.getBoundingClientRect().height + (margin / 2)
-    let tilesPerColumn = Math.floor(mainHeight / tileHeight)
+
+    const mainHeight = main.getBoundingClientRect().height
+    const tileHeight = tile.getBoundingClientRect().height + (margin / 2)
+
+    const tilesPerColumn = Math.round(mainHeight / tileHeight * 1.14869461354)
     
-    let tilesToAdd = tilesPerColumn * tilesPerRow
-    
-    console.log(mainHeight)
-    console.log(tileHeight / 1.14869461354)
-    console.log(tilesPerRow)
-    console.log(tilesPerColumn)
-    console.log(tilesToAdd)
+    const tilesToRemove = Math.floor(tilesPerColumn / 2) + 1
+
+    const tilesToAdd = (tilesPerColumn * tilesPerRow) - tilesToRemove
+
     grid.style = `max-width: ${tilesPerRow * tileWidth}px;`
     for (let step = 0; step < tilesToAdd; step++){
         
@@ -32,5 +32,4 @@ export function gridHtml() {
             tileHtml
         )
     }
-    /* REMEMBER TO REMOVE ONE TILE PER OTHER ROW SO YOU DON'T GET OVERFLOW */
 }

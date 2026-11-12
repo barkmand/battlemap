@@ -3,7 +3,7 @@
   justify-content: center;
   height: 100vh;
 
-  --size: 100px;
+  --size: 80px;
   --margin: 2px;
   --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px);
 }
@@ -42,3 +42,4 @@
   height: 120%; 
   shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
 }
+ 
