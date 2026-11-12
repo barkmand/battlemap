@@ -5,34 +5,115 @@
     right: 0;
     z-index: 2;
 
-    width: 345px;
+    width: 335px;
     height: 100vh;
 
+    border-left: 2px solid rgb(59, 59, 59);
     background-color: rgb(120, 78, 36);
+    transform: translateX(335px);
     transition: 400ms;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    row-gap: 12px;
+    padding: 12px 5px;
+
+    overflow-y: scroll;
 }
 
+/* #region TOGGLING THE MENU */
+
 .characters-menu.active{
-    right: 345px;
+    transform: translateX(0px);
 }
 
 .characters-btn{
     color: rgb(120, 78, 36);
     background-color: blanchedalmond;
     border: 2px solid rgb(59, 59, 59);
+    border-right: 0;
 
-    height: 80px;
-    width: 30px;
-    border-radius: 15px;
-    font-size: 1.2rem;
+    height: 70px;
+    width: 40px;
+    border-radius: 15px 0 0 15px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     position: absolute;
     top: 50%;
-    right: 30px;
-    z-index: 2;
+    right: 0;
+    z-index: 3;
     transition: 400ms;
+
+    cursor: pointer;
+}
+
+.characters-btn.inactive{
+    transform: translateX(35px);
+
+    &:hover{
+        transform: translateX(0)
+    }
 }
 
 .characters-btn.active{
-    right: 375px;
+    transform: translateX(-335px);
+}
+
+.characters-btn-icon{
+    transform: translateX(1.5px);
+}
+
+/* #endregion TOGGLING THE MENU */
+
+.character-card{
+    border-radius: 15px;
+    width: 150px;
+    height: 250px;
+    cursor: pointer;
+}
+
+.character-img{
+    border-radius: 15px 15px 0 0;
+    border: 2px solid rgb(59, 59, 59);
+    border-bottom: none;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+
+    background-color: white;
+
+    user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+#monstrosity .character-img{
+    object-position: left;
+}
+#fey .character-img{
+    object-position: right;
+}
+#player1 .character-img{
+    object-position: center;
+}
+#player3 .character-img{
+    object-position: left;
+}
+
+.character-title{
+    height: 50px;
+    background-color: blanchedalmond;
+    color: black;
+    border-radius: 0 0 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.1px;
+    word-spacing: 3px;
+    border: 2px solid rgb(59, 59, 59);
 }

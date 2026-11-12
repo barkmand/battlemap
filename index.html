@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/index.css" />
     <script type="module" src="js/index.js"></script>
+    <link rel="icon" href="https://hexagonmath.org/favicon-192.png" type="image/png" sizes="192x192">
     <title>Battlemap</title>
   </head>
   <!-- LINK TO THE ARTICLE THAT HELPED ME MAKE THE HEXAGON GRID: https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ -->
@@ -13,11 +14,82 @@
       <div class="grid"></div>
     </main>
     
-    <div class="characters-btn">
-      <i class="fa-solid fa-angle-right characters-btn-icon"></i>
+    <div class="characters-btn inactive">
+      <i class="fa-solid fa-angle-left characters-btn-icon"></i>
     </div>
-    <section class="characters-menu">
-      Fish sticks and butterbread
+    <section class="characters-menu inactive">
+      <div class="character-card" id="player1">
+        <img draggable="false" src="assets/character-images/parry-hotter.jpg" alt="player 1 card" class="character-img">
+        <p class="character-title">Parry Hotter</p>
+      </div>
+      <div class="character-card" id="player2">
+        <img draggable="false" src="assets/character-images/indianan-stones.jpg" alt="player 2 card" class="character-img">
+        <p class="character-title">Indiana Stones</p>
+      </div>
+      <div class="character-card" id="player3">
+        <img draggable="false" src="assets/character-images/vuffi.png" alt="player 3 card" class="character-img">
+        <p class="character-title">Vuffi</p>
+      </div>
+      <div class="character-card" id="commoner">
+        <img draggable="false" src="assets/character-images/human-commoner.jpg" alt="commoner card" class="character-img">
+        <p class="character-title">Friendly NPC</p>
+      </div>
+      <div class="character-card" id="humanoid">
+        <img draggable="false" src="assets/character-images/bandit-humanoid.jpg" alt="humanoid card" class="character-img">
+        <p class="character-title">Humanoid</p>
+      </div>
+      <div class="character-card" id="beast">
+        <img draggable="false" src="assets/character-images/wolf-beast.jpg" alt="beast card" class="character-img">
+        <p class="character-title">Beast</p>
+      </div>
+      <div class="character-card" id="fiend">
+        <img draggable="false" src="assets/character-images/devil-fiend.webp" alt="fiend card" class="character-img">
+        <p class="character-title">Fiend</p>
+      </div>
+      <div class="character-card" id="fey">
+        <img draggable="false" src="assets/character-images/hag-fey.jpg" alt="fey card" class="character-img">
+        <p class="character-title">Fey</p>
+      </div>
+      <div class="character-card" id="monstrosity">
+        <img draggable="false" src="assets/character-images/chimera-monstrosity.webp" alt="monstrosity card" class="character-img">
+        <p class="character-title">Monstrosity</p>
+      </div>
+      <div class="character-card" id="undead">
+        <img draggable="false" src="assets/character-images/vampirespawn-undead.png" alt="undead card" class="character-img">
+        <p class="character-title">Undead</p>
+      </div>
+      <div class="character-card" id="dragon">
+        <img draggable="false" src="assets/character-images/silver-dragon.jpg" alt="dragon card" class="character-img">
+        <p class="character-title">Dragon</p>
+      </div>
+      <div class="character-card" id="aberration">
+        <img draggable="false" src="assets/character-images/mindflayer-aberration.webp" alt="aberration card" class="character-img">
+        <p class="character-title">Aberration</p>
+      </div>
+      <div class="character-card" id="elemental">
+        <img draggable="false" src="assets/character-images/water-elemental.png" alt="elemental card" class="character-img">
+        <p class="character-title">Elemental</p>
+      </div>
+      <div class="character-card" id="plant">
+        <img draggable="false" src="assets/character-images/bulbous-plant.png" alt="plant card" class="character-img">
+        <p class="character-title">Plant Creature</p>
+      </div>
+      <div class="character-card" id="ooze">
+        <img draggable="false" src="assets/character-images/cauldron-ooze.jpg" alt="ooze card" class="character-img">
+        <p class="character-title">Ooze</p>
+      </div>
+      <div class="character-card" id="giant">
+        <img draggable="false" src="assets/character-images/hill-giant.jpg" alt="giant card" class="character-img">
+        <p class="character-title">Giant</p>
+      </div>
+      <div class="character-card" id="celestial">
+        <img draggable="false" src="assets/character-images/deva-celestial.jpg" alt="celestial card" class="character-img">
+        <p class="character-title">Celestial</p>
+      </div>
+      <div class="character-card" id="boss">
+        <img draggable="false" src="assets/character-images/skull-boss.png" alt="boss card" class="character-img">
+        <p class="character-title">Boss/Miniboss</p>
+      </div>
     </section>
   </body>
 </html>
