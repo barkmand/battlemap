@@ -1,0 +1,1 @@
+remember to use EMOJIS for the status effects so you don't have to add a fuck ton of extra images. 
