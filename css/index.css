@@ -6,6 +6,8 @@
 
 @import url(layout/background-hover.css);
 @import url(layout/grid-layout.css);
-@import url(layout/insert-characters.css);
+@import url(layout/characters-menu.css);
+@import url(layout/grid-entities.css);
+@import url(layout/initiative-menu.css);
 
 @import url(style.css);

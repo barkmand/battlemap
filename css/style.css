@@ -2,3 +2,15 @@
     cursor: crosshair;
 }
 
+.background-image{
+    position: absolute;
+    z-index: -10;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: contain;
+}

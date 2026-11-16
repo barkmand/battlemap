@@ -1,26 +1,84 @@
 export function insertCharacters() {
-  // #region MENUTOGGLE
+  // #region CHARACTERS MENU
 
   const charactersMenu = document.querySelector(".characters-menu");
-  const toggleBtn = document.querySelector(".characters-btn");
-  const toggleBtnIcon = document.querySelector(".characters-btn-icon");
+  const charactersToggleBtn = document.querySelector(".characters-btn");
+  const charactersToggleBtnIcon = document.querySelector(".characters-btn-icon");
 
-  toggleBtn.addEventListener("click", () => {
-    charactersMenu.classList.toggle("active");
-    toggleBtn.classList.toggle("active");
-    function toggleBtnInactive() {
-      toggleBtn.classList.toggle("inactive");
+  charactersToggleBtn.addEventListener("click", () => {
+    // TOGGLING THE OTHER MENU
+if(!charactersMenu.classList.contains("active") && initiativeMenu.classList.contains("active")){
+      initiativeMenu.classList.toggle("active");
+    initiativeToggleBtn.classList.toggle("active");
+    function initiativeToggleBtnInactive() {
+      initiativeToggleBtn.classList.toggle("inactive");
     }
-    if (!toggleBtn.classList.contains("inactive")) {
-      setTimeout(toggleBtnInactive, 350);
+    if (!initiativeToggleBtn.classList.contains("inactive")) {
+      setTimeout(initiativeToggleBtnInactive, 350);
     } else {
-      toggleBtnInactive();
+      initiativeToggleBtnInactive();
     }
-    toggleBtnIcon.classList.toggle("fa-angle-right");
-    toggleBtnIcon.classList.toggle("fa-angle-left");
+    initiativeToggleBtnIcon.classList.toggle("fa-angle-up");
+    initiativeToggleBtnIcon.classList.toggle("fa-angle-down");
+    }
+
+    // TOGGLING THE CLICKED MENU
+    charactersMenu.classList.toggle("active");
+    charactersToggleBtn.classList.toggle("active");
+    function charactersToggleBtnInactive() {
+      charactersToggleBtn.classList.toggle("inactive");
+    }
+    if (!charactersToggleBtn.classList.contains("inactive")) {
+      setTimeout(charactersToggleBtnInactive, 350);
+    } else {
+      charactersToggleBtnInactive();
+    }
+    charactersToggleBtnIcon.classList.toggle("fa-angle-right");
+    charactersToggleBtnIcon.classList.toggle("fa-angle-left");
   });
 
-  // #endregion MENUTOGGLE
+  // #endregion CHARACTERS MENU
+
+  // #region INITIATIVE MENU
+
+const initiativeMenu = document.querySelector(".initiative-menu");
+  const initiativeToggleBtn = document.querySelector(".initiative-btn");
+  const initiativeToggleBtnIcon = document.querySelector(".initiative-btn-icon");
+
+  initiativeToggleBtn.addEventListener("click", () => {
+    // TOGGLING THE OTHER MENU
+    if(charactersMenu.classList.contains("active") && !initiativeMenu.classList.contains("active")){
+      charactersMenu.classList.toggle("active");
+      charactersToggleBtn.classList.toggle("active");
+      function charactersToggleBtnInactive() {
+        charactersToggleBtn.classList.toggle("inactive");
+      }
+      if (!charactersToggleBtn.classList.contains("inactive")) {
+        setTimeout(charactersToggleBtnInactive, 350);
+      } else {
+        charactersToggleBtnInactive();
+      }
+      charactersToggleBtnIcon.classList.toggle("fa-angle-right");
+      charactersToggleBtnIcon.classList.toggle("fa-angle-left");
+    }
+
+    // TOGGLING THE CLICKED MENU
+    initiativeMenu.classList.toggle("active");
+    initiativeToggleBtn.classList.toggle("active");
+    function initiativeToggleBtnInactive() {
+      initiativeToggleBtn.classList.toggle("inactive");
+    }
+    if (!initiativeToggleBtn.classList.contains("inactive")) {
+      setTimeout(initiativeToggleBtnInactive, 350);
+    } else {
+      initiativeToggleBtnInactive();
+    }
+    initiativeToggleBtnIcon.classList.toggle("fa-angle-up");
+    initiativeToggleBtnIcon.classList.toggle("fa-angle-down");
+
+  });
+
+// #endregion INTITATIVE MENU
 
   const characterCards = document.querySelectorAll(".character-card");
   const characterImages = document.querySelectorAll(".character-img");
@@ -32,23 +90,19 @@ export function insertCharacters() {
 let selectedCardSrc
 let selectedCardTitle
 const body = document.querySelector("body")
-
-let entitiesExist = false
   
+// #region CHARACTERS INSERTION
+
   characterCards.forEach((card, index) => {
     card.addEventListener("mousedown", () => {
       selectedCardId = card.id;
       selectedCardSrc = card.querySelector(".character-img").src
       selectedCardTitle = card.querySelector(".character-title").textContent
 
-      /* MAKE A VISIBLE ELEMENT ON THE CURSOR THAT REPRESENTS A DRAG-&-DROP FUNCTIONALITY */
-
         body.classList.add("placing")
 
       tiles.forEach((tile) => {
-          tile.addEventListener("mouseup", tileMouseup, () =>{
-            entitiesExist = true
-          });
+          tile.addEventListener("mouseup", tileMouseup);
           window.addEventListener("mouseup", () => {
             tile.removeEventListener("mouseup", tileMouseup)
             body.classList.remove("placing")
@@ -64,38 +118,101 @@ let entitiesExist = false
                   </div>
                   </div>
                   `;
+
+                }else{
+                  console.log("That tile is currently occupied")
                 }
           }
-          
       });
     });
   });
 
-  let entityList
+  // #endregion CHARACTERS INSERTION
 
-  /* if mouse is hovering over an entity */
-  grid.addEventListener("mouseout", updateEntityList)
+  // #region changing the values of the currently hovered tile
 
+  let entities = false
 
-        /* MAN F THIS IM GOING HOME I WANNA PLAY CYBERPUNK */
+  let currentTile = false
 
+  let currentEntity = false
 
-  function updateEntityList(){
-    if (document.querySelector("grid-entity")){
-        /* entityList = document.querySelectorAll(".grid-entity")
-        entityList.forEach((entity, index) => {
-            entity.addEventListener("mouseover", () => {
-                entityList.forEach((entity) => {
-                    entity.addEventListener("mouseout", () => {
-
-                    })
-                })
-            })
-        }) */
+  tiles.forEach((tile, index) => {
+    tile.addEventListener("mouseover", () => {
+      currentTile = tiles[index]
+      if (currentTile.querySelector(".grid-entity")){
+        currentEntity = currentTile.querySelector(".grid-entity")
+      }
+       if (document.querySelector(".grid-entity")){
+        entities = document.querySelectorAll(".grid-entity")
     }
-      /* let hoveredEntity = Element.matches(".grid-entity:hover") */
-
-  }
+  })
   
+  tile.addEventListener("mouseleave", () => {
+    currentTile = "false"
+    currentEntity = false
+    if(document.querySelector(".grid-entity")){
+      let titlesToReset = document.querySelectorAll(".entity-title")
+      titlesToReset.forEach((title) => {
+        title.classList.remove("editable")
+        
+        title.contentEditable = "false"
+        
+      })
+      
+    }
+  })
+})
 
+  let currentEntityHealthBar
+  let currentEntityHealth = 0
+
+  window.addEventListener("keydown", (event) => {
+    if(currentTile && currentEntity && !currentEntity.querySelector(".entity-title").classList.contains("editable")){
+
+      currentEntityHealthBar = currentEntity.querySelector(".entity-hpbar")
+      currentEntityHealth = Number(currentEntityHealthBar.textContent)
+      
+      switch (event.key.toLowerCase()) {
+        case "arrowup":
+          currentEntityHealth += 1
+          break;
+  
+        case "arrowdown":
+          currentEntityHealth -= 1
+          break;
+  
+        case "arrowleft":
+          currentEntityHealth -= 5
+          break;
+  
+        case "arrowright":
+          currentEntityHealth += 5
+          break;
+      }
+      
+      currentEntityHealthBar.innerHTML = currentEntityHealth
+    }
+  })
+
+  let currentEntityTitle = false
+
+  window.addEventListener("dblclick", () => {
+    if(currentTile && currentEntity){
+      currentEntityTitle = currentEntity.querySelector(".entity-title")
+          currentEntityTitle.classList.add("editable")
+          currentEntityTitle.contentEditable = "true"
+          window.addEventListener("keydown", (keypress) => {
+            if(keypress.key.toLowerCase == "enter" || keypress.keyCode == 13){
+              currentEntityTitle.classList.remove("editable")
+              currentEntityTitle.contentEditable = "false"
+            }
+          })
+        }
+      })
+
+  // #endregion changing the values of the currently hovered tile
+
+
+  
 }

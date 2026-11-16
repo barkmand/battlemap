@@ -24,15 +24,15 @@
   background-color: rgba(0, 0, 0, 0.025);
   transition: 40ms ease-out;
   &:hover{
-    background-color: rgba(255, 0, 0, 0.075);
+    background-color: rgba(255, 0, 0, 0.2);
   }
   overflow: visible;
 }
 
 .grid-tile.active{
-    background-color: rgba(0, 0, 255, 0.075);
+    background-color: rgba(0, 0, 255, 0.2);
     &:hover{
-      background-color: rgba(255, 0, 255, 0.075);
+      background-color: rgba(255, 0, 255, 0.2);
     }
 }
 
@@ -44,3 +44,6 @@
   shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
 }
  
+.grid-tile .grid-entity:hover{
+  background-color: rgba(255, 255, 255, 0.6);
+}
