@@ -148,12 +148,11 @@ export function insertCharacters() {
               let initiativeCards = document.querySelectorAll(".initiative-card")
               initiativeCards.forEach((card) => {
                 card.addEventListener("mouseover", (e) => {
-                  /* FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK */
                   card.classList.add("highlighted")
-                  grid.querySelector(`#${card.id}`).classList.add("highlighted")
+                  grid.querySelector(`#${card.id}`).parentNode.classList.add("highlighted")
                   card.addEventListener("mouseleave", () => {
                     card.classList.remove("highlighted")
-                    grid.querySelector(`#${card.id}`).classList.remove("highlighted")
+                    grid.querySelector(`#${card.id}`).parentNode.classList.remove("highlighted")
                   })
                 })
               })
@@ -177,51 +176,16 @@ export function insertCharacters() {
       currentTile = tiles[index];
       if (currentTile.querySelector(".grid-entity")) {
         currentEntity = currentTile.querySelector(".grid-entity");
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* FUUUUUUUUUUUUUUUUUUUCK */
-                  currentEntity.classList.add("highlighted")
-                  initiativeMenu.querySelector(`#${currentEntity.id}`).classList.add("highlighted")
-                  currentEntity.addEventListener("mouseleave", () => {
-                    currentEntity.classList.remove("highlighted")
-                    initiativeMenu.querySelector(`#${currentEntity.id}`).classList.remove("highlighted")
-                  })
+        currentTile.classList.add("highlighted")
+        initiativeMenu.querySelector(`#${currentEntity.id}`).classList.add("highlighted")
       }
     });
 
     tile.addEventListener("mouseleave", () => {
       if(currentEntity){
         updateInitiativeTitle()
+        currentTile.classList.remove("highlighted")
+          initiativeMenu.querySelector(`#${currentEntity.id}`).classList.remove("highlighted")
       }
       currentTile = "false";
       currentEntity = false;
@@ -295,9 +259,56 @@ export function insertCharacters() {
           currentEntity.querySelector(".entity-title").textContent
   }
 
+let selectedEntity = false
+let movingCheck = false
+let deleted = false
+
+
+/* AAAAALL OF THIS IS BULLSHIT I WAS TOO TIRED TO DO IT PROPER */
+
+  /* tiles.forEach((tile) => {
+    tile.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      if (e.target.querySelector(".grid-entity")){
+        selectedEntity = (e.target.querySelector(".grid-entity"))
+        
+        console.log(selectedEntity)
+
+        
+        if(movingCheck){
+          body.classList.remove("entity-interaction")
+          selectedEntity = false
+          
+        }else{
+          body.classList.add("entity-interaction")
+        }
+
+        window.addEventListener("keydown", (keypress) => {
+          if(keypress.keyCode == 8 || keypress.key == "backspace"){
+            deleteEntity()
+            body.classList.remove("entity-interaction")
+            deleted = true
+            selectedEntity = false
+            movingCheck = false
+          } 
+        })
+        
+      }
+
+      if (movingCheck == true && (!e.target)){
+
+      }
+
+      movingCheck = true
+      deleted = false
+      return false;
+    });
+    
+  }) */
+
 function deleteEntity() {
-  /* can't add eventlisteners because you will be writing a bunch and will inevitably hit the wrong key at some point */
-  /* FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK */
+  selectedEntity.remove()
+  initiativeMenu.getElementById(selectedEntity.id).remove()
 }
   
 

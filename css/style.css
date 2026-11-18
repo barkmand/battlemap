@@ -2,6 +2,10 @@
     cursor: crosshair;
 }
 
+.entity-interaction{
+    cursor: move;
+}
+
 .background-image{
     position: absolute;
     z-index: -10;
@@ -11,6 +15,6 @@
     width: auto;
     height: auto;
     max-width: 100vw;
-    max-height: 100vh;
+    max-height: 90vh;
     object-fit: contain;
 }
