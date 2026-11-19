@@ -5,6 +5,9 @@ export function grid(){
         tile.addEventListener("mousedown", () => {
             tile.classList.toggle("active")
         })
+        tile.addEventListener("contextmenu", () => {
+            tile.classList.toggle("active")
+        })
     })
     let toggleTilesConfirmation = false
     window.addEventListener("keydown", (e) => {

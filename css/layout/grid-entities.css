@@ -1,5 +1,9 @@
 /* #region ENTITY */
 
+.entity-interaction .grid-entity .entity-title{
+    cursor: move;
+}
+
 .grid-entity{
     transition: 300ms ease-in-out;
     position: absolute;

@@ -89,9 +89,9 @@ export function insertCharacters() {
 
   // #endregion INTITATIVE MENU
 
+  // #region CHARACTERS INSERTION
+
   const characterCards = document.querySelectorAll(".character-card");
-  const characterImages = document.querySelectorAll(".character-img");
-  const characterTitles = document.querySelectorAll(".character-title");
   const tiles = document.querySelectorAll(".grid-tile");
   const grid = document.querySelector(".grid");
 
@@ -101,8 +101,6 @@ export function insertCharacters() {
   let selectedCardSrc;
   let selectedCardTitle;
   const body = document.querySelector("body");
-
-  // #region CHARACTERS INSERTION
 
   characterCards.forEach((card, index) => {
     card.addEventListener("mousedown", () => {
@@ -135,7 +133,6 @@ export function insertCharacters() {
                   </div>
                   `;
 
-            console.log(selectedCardId + Number(entityIndex))
               let initiativeCard = 
               `
                 <div class="initiative-card" id="${selectedCardId}">
@@ -229,21 +226,21 @@ export function insertCharacters() {
         case "arrowright":
           currentEntityHealth += 5;
           break;
+        }
+        
+        currentEntityHealthBar.innerHTML = currentEntityHealth;
       }
-
-      currentEntityHealthBar.innerHTML = currentEntityHealth;
-    }
-  });
-
-  let currentEntityTitle = false;
-
-  window.addEventListener("dblclick", () => {
-    if (currentTile && currentEntity) {
+    });
+    
+    let currentEntityTitle = false;
+    
+    window.addEventListener("dblclick", () => {
+      if (currentTile && currentEntity) {
       currentEntityTitle = currentEntity.querySelector(".entity-title");
       currentEntityTitle.classList.add("editable");
       currentEntityTitle.contentEditable = "true";
       window.addEventListener("keydown", (keypress) => {
-        if (keypress.key.toLowerCase == "enter" || keypress.keyCode == 13) {
+        if (keypress.key.toLowerCase() == "enter" || keypress.keyCode == 13) {
           currentEntityTitle.classList.remove("editable");
           currentEntityTitle.contentEditable = "false";
           updateInitiativeTitle()
@@ -254,63 +251,66 @@ export function insertCharacters() {
   });
   
   function updateInitiativeTitle() {
-          initiativeMenu.querySelector(`#${currentEntity.id}`)
-          .querySelector(".initiative-title").textContent = 
-          currentEntity.querySelector(".entity-title").textContent
+    initiativeMenu.querySelector(`#${currentEntity.id}`)
+    .querySelector(".initiative-title").textContent = 
+    currentEntity.querySelector(".entity-title").textContent
   }
-
-let selectedEntity = false
-let movingCheck = false
-let deleted = false
-
-
-/* AAAAALL OF THIS IS BULLSHIT I WAS TOO TIRED TO DO IT PROPER */
-
-  /* tiles.forEach((tile) => {
-    tile.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-      if (e.target.querySelector(".grid-entity")){
-        selectedEntity = (e.target.querySelector(".grid-entity"))
-        
-        console.log(selectedEntity)
-
-        
-        if(movingCheck){
-          body.classList.remove("entity-interaction")
-          selectedEntity = false
-          
-        }else{
-          body.classList.add("entity-interaction")
-        }
-
-        window.addEventListener("keydown", (keypress) => {
-          if(keypress.keyCode == 8 || keypress.key == "backspace"){
-            deleteEntity()
-            body.classList.remove("entity-interaction")
-            deleted = true
-            selectedEntity = false
-            movingCheck = false
-          } 
-        })
-        
-      }
-
-      if (movingCheck == true && (!e.target)){
-
-      }
-
-      movingCheck = true
-      deleted = false
-      return false;
-    });
-    
-  }) */
-
-function deleteEntity() {
-  selectedEntity.remove()
-  initiativeMenu.getElementById(selectedEntity.id).remove()
-}
   
+  let selectedEntity = false
+  let movingCheck = false
+  
+  function handleDeleteKey(keypress) {
+    if(keypress.keyCode == 46 || keypress.key == "delete"){
+          deleteEntity()
+        }
+  }
+  
+  function deleteEntity() {
+    
+    if(!selectedEntity){return}
+  
+    initiativeMenu.querySelector(`#${selectedEntity.id}`).remove()
+    selectedEntity.remove()
+  
+    selectedEntity = false
+    movingCheck = false
+
+    currentTile.classList.remove("highlighted")
+    currentEntity = false
+
+    body.classList.remove("entity-interaction")
+
+    window.removeEventListener("keydown", handleDeleteKey)
+  }
+  
+
+  tiles.forEach((tile) => {
+    tile.addEventListener("contextmenu", (rClick) => {
+      
+      if(currentEntity && !movingCheck){
+        rClick.preventDefault();
+        selectedEntity = currentEntity
+        movingCheck = true
+        body.classList.add("entity-interaction")
+        
+        window.addEventListener("keydown", handleDeleteKey)
+      }
+      
+      if(!currentEntity && movingCheck){
+        rClick.preventDefault();
+        movingCheck = false
+        body.classList.remove("entity-interaction")
+
+        window.removeEventListener("keydown", handleDeleteKey)
+
+    if(selectedEntity){
+      tile.appendChild(selectedEntity)
+      selectedEntity = false
+    }
+  }
+  
+})
+})
 
   // #endregion changing the values of the currently hovered tile
 }

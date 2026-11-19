@@ -2,3 +2,10 @@
     --size: 50px;
     --margin: 1px;
 }
+
+.background-image{
+    /* CHANGE max-width AND max-height TO ACCOMODATE ANY ROTATIONAL CHANGES  */
+    transform: translateX(-50%) /* ONLY CHANGE rotateZ */ rotateZ(0deg);
+    max-width: 100vw;
+    max-height: 90vh;
+}
