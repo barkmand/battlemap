@@ -99,18 +99,7 @@
   -webkit-user-drag: none;
 }
 
-#monstrosity .character-img{
-    object-position: left;
-}
-#fey .character-img{
-    object-position: right;
-}
-#player1 .character-img{
-    object-position: center;
-}
-#player3 .character-img{
-    object-position: left;
-}
+
 
 .character-title{
     height: 50px;

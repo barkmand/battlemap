@@ -100,6 +100,7 @@ export function insertCharacters() {
   let selectedCardId;
   let selectedCardSrc;
   let selectedCardTitle;
+  let entityClassToAdd
   const body = document.querySelector("body");
 
   characterCards.forEach((card, index) => {
@@ -117,14 +118,17 @@ export function insertCharacters() {
           body.classList.remove("placing");
         });
         function addNewCreature() {
-          if (tile.innerHTML == "") {
+          if (!tile.querySelector(".grid-entity")) {
 
             entityIndex += 1
 
+            entityClassToAdd = selectedCardId
+
             selectedCardId = selectedCardId + Number(entityIndex)
 
+
             tile.innerHTML = `
-                  <div class="grid-entity" id="${selectedCardId}">
+                  <div class="grid-entity ${entityClassToAdd}" id="${selectedCardId}">
                   <img class="entity-img" alt="entity" src="${selectedCardSrc}">
                   <div class="entity-info">
                       <p class="entity-title">${selectedCardTitle}</p>

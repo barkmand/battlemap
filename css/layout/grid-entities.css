@@ -23,7 +23,8 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
+    align-items: center;
     gap: calc(var(--size) / 8);
 
     position: absolute;
@@ -35,13 +36,20 @@
     padding-top: 0;
 }
 
+.entity-info:hover{
+    justify-content: center;
+}
+
 .grid-entity:hover .entity-info{
     opacity: 100%;
 }
 
 .entity-img{
     width: 100%;
+    
     transition: 100ms ease-out;
+
+    margin-top: 10%;
 }
 
 .grid-entity:hover .entity-img{
@@ -62,3 +70,71 @@
 }
 
 /* #endregion ENTITY */
+
+/* #region INDIVIDUAL ENTITY STYLING */
+
+
+
+.vuffi .entity-img{
+    margin-top: 50%;
+    margin-left: 15%;
+}
+
+.peber .entity-img{
+    margin-top: 20%;
+    margin-left: 15%;
+}
+
+.commoner .entity-img{
+    margin-top: 20%;
+}
+.humanoid .entity-img{
+    margin-left: 15%;
+    margin-top: 30%;
+}
+.beast .entity-img{
+    margin-right: 25%;
+    margin-top: 40%;
+}
+.construct .entity-img{
+    margin-top: 25%;
+}
+
+.fey .entity-img{
+    margin-right: 25%;
+    margin-top: 25%;
+}
+
+.monstrosity .entity-img{
+    margin-top: 0%;
+}
+
+.undead .entity-img{
+    margin-top: 105%;
+}
+
+.aberration .entity-img{
+    margin-top: 25%;
+}
+
+.elemental .entity-img{
+    margin-left: 10%;
+    margin-top: 20%;
+}
+
+.ooze .entity-img{
+    margin-top: 25%;
+    margin-right: 10%;
+}
+
+.giant .entity-img{
+    margin-right: 15%;
+    margin-top: 25%;
+}
+
+.boss .entity-img{
+    margin-top: 0%;
+    margin-bottom: 25%;
+}
+
+/* #endregion INDIVIDUAL ENTITY STYLING */
