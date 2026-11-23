@@ -58,16 +58,33 @@
 }
 
 .entity-title{
-    font-size: calc(var(--size) / 5.5);
-    user-select: none; /* standard syntax */
+    user-select: none;
     cursor: text;
     z-index: 3;
+    font-family: var(--title-font);
+    font-size: calc(var(--size) / 4.5);
+    padding: 3px 1px 0;
+}
+
+.entity-hpbar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-5px);
+}
+
+.entity-hpbar-icon{
+    color: rgb(139, 25, 25);
+    transform: translateY(2px);
 }
 
 .entity-hpbar{
     font-size: calc(var(--size) / 3);
-    user-select: none; /* standard syntax */
+    user-select: none;
     z-index: 2;
+    font-family: var(--health-font);
+    color: rgb(139, 25, 25);
+    font-weight: 600;
 }
 
 /* #endregion ENTITY */

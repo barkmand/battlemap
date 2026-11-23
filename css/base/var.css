@@ -1,6 +1,10 @@
 :root{
     --size: 75px;
     --margin: 1px;
+
+    --title-font: "Jim Nightshade";
+    --health-font: MonteCarlo;
+    --initiative-font: Engagement;
 }
 
 .background-image{

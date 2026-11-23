@@ -1,10 +1,10 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css);
 
+@import url('https://fonts.googleapis.com/css2?family=Engagement&family=Jim+Nightshade&family=MonteCarlo&display=swap');
+
 @import url(base/reset.css);
 @import url(base/var.css);
-@import url(base/typography.css);
 
-@import url(layout/background-hover.css);
 @import url(layout/grid-layout.css);
 @import url(layout/characters-menu.css);
 @import url(layout/grid-entities.css);

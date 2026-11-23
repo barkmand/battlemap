@@ -132,7 +132,7 @@ export function insertCharacters() {
                   <img class="entity-img" alt="entity" src="${selectedCardSrc}">
                   <div class="entity-info">
                       <p class="entity-title">${selectedCardTitle}</p>
-                      <p class="entity-hpbar">0</p>
+                      <div class="entity-hpbar-container"><i class="fa-regular fa-heart entity-hpbar-icon"></i><p class="entity-hpbar">0</p></div>
                   </div>
                   </div>
                   `;
@@ -140,7 +140,7 @@ export function insertCharacters() {
               let initiativeCard = 
               `
                 <div class="initiative-card" id="${selectedCardId}">
-                <p class="initiative-counter" contenteditable="true">0</p>
+                <div class="initiative-counter-container"><img class="initiative-icon" src="assets/initiative.png" alt="initiative icon"><p class="initiative-counter" contenteditable="true">0</p></div>
                 <img src="${selectedCardSrc}" alt="Initiative card image" class="initiative-img">
                 <p class="initiative-title">${document.getElementById(selectedCardId).querySelector(".entity-title").textContent}</p>
                 </div>
@@ -298,21 +298,32 @@ export function insertCharacters() {
         body.classList.add("entity-interaction")
         
         window.addEventListener("keydown", handleDeleteKey)
+        return
       }
       
       if(!currentEntity && movingCheck){
         rClick.preventDefault();
         movingCheck = false
         body.classList.remove("entity-interaction")
+        
+        window.removeEventListener("keydown", handleDeleteKey)
+        
+        if(selectedEntity){
+          tile.appendChild(selectedEntity)
+          selectedEntity = false
+        }
+        return
+      }
+      
+      if(currentEntity && movingCheck){
+        rClick.preventDefault();
+        movingCheck = false
+        body.classList.remove("entity-interaction")
+        
 
         window.removeEventListener("keydown", handleDeleteKey)
-
-    if(selectedEntity){
-      tile.appendChild(selectedEntity)
-      selectedEntity = false
-    }
-  }
-  
+        return
+      }
 })
 })
 
